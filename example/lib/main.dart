@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_overlay/simple_overlay.dart';
+import 'package:simple_multiple_overlays/simple_overlay.dart';
 
 void main() {
   runApp(const MyApp());

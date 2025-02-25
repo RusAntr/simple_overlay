@@ -24,7 +24,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  simple_overlay:
+  simple_multiple_overlays:
     path: ../
 
 
