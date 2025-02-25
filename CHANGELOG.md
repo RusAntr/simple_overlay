@@ -1,3 +1,7 @@
+## [1.0.2]
+
+- Adding 'delay' property
+
 ## [1.0.1]
 
 - Adding 'useCenter' property

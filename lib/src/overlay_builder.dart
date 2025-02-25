@@ -11,6 +11,7 @@ class _OverlayBuilder extends StatefulWidget {
     required this.child,
     this.onOverlayTap,
     this.onOverlayBackgroundTap,
+    this.delay,
   });
 
   /// Showing overlay?
@@ -30,6 +31,13 @@ class _OverlayBuilder extends StatefulWidget {
 
   /// Key to correctly identify overlay
   final Key parentKey;
+
+  /// Delay before showing overlay
+  ///
+  /// Defaults to [kOverlayDelay] - 500ms
+  ///
+  /// If set to null delay won't be used
+  final Duration? delay;
 
   @override
   State<_OverlayBuilder> createState() => _OverlayBuilderState();
@@ -84,8 +92,9 @@ class _OverlayBuilderState extends State<_OverlayBuilder> {
     // effective and secure way of fixing this
     // FIXME(rus): Find another way to handle inserting overlay when transitiong
     // between screens
-    await Future<void>.delayed(kOverlayDelay);
-
+    if (widget.delay != null) {
+      await Future<void>.delayed(widget.delay!);
+    }
     _updateCutoutRect();
 
     if (!widget.showOverlay || _cutoutRect == null) {

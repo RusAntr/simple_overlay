@@ -16,10 +16,11 @@ class AnchoredOverlay extends StatelessWidget {
     required this.showOverlay,
     required this.overlayBuilder,
     required this.child,
-    this.onOverlayTap,
-    this.onBackgroundTap,
     this.offset = Offset.zero,
     this.useCenter = false,
+    this.delay = kOverlayDelay,
+    this.onOverlayTap,
+    this.onBackgroundTap,
   });
 
   /// Show overlay?
@@ -48,6 +49,13 @@ class AnchoredOverlay extends StatelessWidget {
   /// Defaults to false
   final bool useCenter;
 
+  /// Delay before showing overlay
+  ///
+  /// Defaults to [kOverlayDelay] - 500ms
+  ///
+  /// If set to null delay won't be used
+  final Duration? delay;
+
   @override
   Widget build(BuildContext context) {
     return _OverlayBuilder(
@@ -55,6 +63,7 @@ class AnchoredOverlay extends StatelessWidget {
       showOverlay: showOverlay,
       onOverlayTap: onOverlayTap,
       onOverlayBackgroundTap: onBackgroundTap,
+      delay: delay,
       overlayBuilder: (BuildContext overlayContext) {
         var anchorPoint = Offset.zero;
         final box = context.findRenderObject() as RenderBox?;
