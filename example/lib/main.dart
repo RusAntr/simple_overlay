@@ -89,9 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('show one overlay'),
             ),
             AnchoredOverlay(
-              offset: Offset(-0.5, 1.25),
+              offset: Offset(0, 4.25),
               parentKey: ValueKey('SecondOverlay'),
               showOverlay: showSecondOverlay,
+              useCenter: true,
               onOverlayTap: () {
                 setState(() {
                   showSecondOverlay = false;

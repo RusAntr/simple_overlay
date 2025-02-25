@@ -19,6 +19,7 @@ class AnchoredOverlay extends StatelessWidget {
     this.onOverlayTap,
     this.onBackgroundTap,
     this.offset = Offset.zero,
+    this.useCenter = false,
   });
 
   /// Show overlay?
@@ -42,6 +43,11 @@ class AnchoredOverlay extends StatelessWidget {
   /// Key to correctly identify overlay. Best to use [ValueKey]
   final Key parentKey;
 
+  /// Center based on screen size?
+  ///
+  /// Defaults to false
+  final bool useCenter;
+
   @override
   Widget build(BuildContext context) {
     return _OverlayBuilder(
@@ -54,6 +60,21 @@ class AnchoredOverlay extends StatelessWidget {
         final box = context.findRenderObject() as RenderBox?;
         if (box != null) {
           anchorPoint = box.localToGlobal(box.paintBounds.center);
+        }
+
+        if (useCenter) {
+          return Center(
+            child: FractionalTranslation(
+              translation: offset,
+              child: GestureDetector(
+                onTap: () {
+                  onOverlayTap?.call();
+                  OverlayManager.instance.removeOverlay(parentKey);
+                },
+                child: overlayBuilder(overlayContext),
+              ),
+            ),
+          );
         }
 
         return Positioned(
