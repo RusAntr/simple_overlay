@@ -1,0 +1,24 @@
+name: simple_overlay
+description: "Easy to use overlay with capability to show multiple overlays on the same background"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+# Dependencies specify other packages that your package needs in order to work.
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
