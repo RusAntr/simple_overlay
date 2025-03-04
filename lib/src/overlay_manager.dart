@@ -48,7 +48,7 @@ class OverlayManager {
   void _updateOverlay(BuildContext parentContext) {
     _overlayEntry?.remove();
 
-    // If list of overlays is empty we exist
+    // If list of overlays is empty - exit
     if (_overlays.isEmpty) {
       _overlayEntry = null;
       return;

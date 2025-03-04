@@ -1,16 +1,42 @@
 # simple_overlay
 
-A new Flutter project.
+A simple solution for showing multiple overlays on a single background with cutouts
 
-## Getting Started
+## 🎥 Preview
+image
 
-This project is a starting point for a Flutter application.
+## 🧭 Usage
 
-A few resources to get you started if this is your first Flutter project:
+#### 1. Configure global overlay style
+```dart
+ OverlayManager.instance
+      ..backgroundColor = Colors.black.withValues(alpha: 0.7)
+      ..borderRadius = 10
+      ..padding = EdgeInsets.all(5);
+```
+#### 2. Wrap you widget with `AnchoredOverlay`
+```dart
+AnchoredOverlay(
+    offset: Offset(0, 4.75),
+    parentKey: ValueKey('SecondOverlay'), // do not repeat
+    showOverlay: showSecondOverlay,
+    useCenter: true,
+    onOverlayTap: () {...},
+    overlayBuilder: (context) => Material(...),
+    child: ...
+),
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📜 `AnchoredOverlay` widget properties 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Property | Required | Description |
+| ------------- |:-------------:|---------------- |
+| offset | false | Offset of the overlay from widget overlayed upon
+| parentKey | true | A `Key` object to properly identify overlay in a list of overlays, MUST be unique|
+| showOverlay | true | Whether the overlay is currently displayed |
+| useCenter | false | Whether to display the overlay in the center |
+| onOverlayTap | false | OnTap callback |
+| overlayBuilder | true | Overlay content to be displayed |
+| onBackgroundTap | false | onTap callback |
+| delay | false | Delay before overlay appearance |
+| child | true | Widget to overlay upon |
