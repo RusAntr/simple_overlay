@@ -3,7 +3,7 @@
 A simple solution for showing multiple overlays on a single background with cutouts
 
 ## 🎥 Preview
-image
+<img src="https://github.com/RusAntr/simple_overlay/blob/main/example/example_images/example.gif?raw=true" height="550px">
 
 ## 🧭 Usage
 
