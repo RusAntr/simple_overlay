@@ -1,7 +1,7 @@
 name: simple_multiple_overlays
 description: "Easy to use overlay with capability to show multiple overlays on the same background"
 repository: https://github.com/RusAntr/simple_overlay
-version: 1.0.2
+version: 1.0.3
 
 environment:
   sdk: ^3.6.2
